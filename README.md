@@ -18,8 +18,6 @@ Here's what the app looks like.
 | :---: | :---: |
 | ![Notes App Screenshot](images/2nd.jpg) | ![Notes App Screenshot](images/1st.jpg) |
 
-*To add your own screenshots, take a screenshot from the emulator, drag it into your project's root folder in Android Studio, commit and push it, and then update the `src=""` path.*
-
 ## 🛠️ Built With
 
 This project is built using the latest technologies in the Android ecosystem:
