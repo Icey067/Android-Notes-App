@@ -4,24 +4,22 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.notesmakingapp.ui.theme.NotesMakingAppTheme
 import java.io.File
 import java.io.IOException
@@ -92,53 +90,48 @@ fun NoteAppScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.Black)
                 .padding(innerPadding)
-                .padding(16.dp),
+                .padding(horizontal = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Text(
                 text = "Saved Notes",
-                style = MaterialTheme.typography.headlineMedium,
+                style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = MaterialTheme.colorScheme.onBackground
             )
 
-            Spacer(modifier = Modifier.height(25.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-            LazyColumn{
+            LazyColumn(
+                modifier = Modifier.weight(1f)
+            ) {
                 items(savedNotes.value) { note ->
                     SavedNoteCard(note = note, onDelete = { deleteNote(note.fileName) })
                     Spacer(modifier = Modifier.height(8.dp))
                 }
             }
 
-            Spacer(modifier = Modifier.weight(1f))
+            Spacer(modifier = Modifier.height(16.dp))
+
             Text(
                 text = "New Note",
                 style = MaterialTheme.typography.titleLarge,
-                color = Color.White
+                color = MaterialTheme.colorScheme.onBackground
             )
 
-            Card(
+            Spacer(modifier = Modifier.height(8.dp))
+
+            OutlinedTextField(
+                value = newNoteContent.value,
+                onValueChange = { newNoteContent.value = it },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(140.dp),
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-            ) {
-                TextField(
-                    value = newNoteContent.value,
-                    onValueChange = { newNoteContent.value = it },
-                    modifier = Modifier.fillMaxSize(),
-                    placeholder = { Text("Start writing...") },
-                    colors = TextFieldDefaults.colors(
-                        focusedIndicatorColor = MaterialTheme.colorScheme.surface,
-                        unfocusedIndicatorColor = MaterialTheme.colorScheme.surface,
-                    )
-                )
-            }
+                placeholder = { Text("Start writing...") }
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -152,11 +145,12 @@ fun NoteAppScreen() {
                     Text("Save")
                 }
                 OutlinedButton(onClick = { newNoteContent.value = "" }, modifier = Modifier.weight(1f)) {
-                    Icon(Icons.Default.Delete, contentDescription = "Clear Input")
+                    Icon(Icons.Default.Clear, contentDescription = "Clear Input")
                     Spacer(modifier = Modifier.width(4.dp))
-                    Text("Delete")
+                    Text("Clear")
                 }
             }
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
@@ -167,7 +161,7 @@ fun SavedNoteCard(note: Note, onDelete: () -> Unit) {
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFF1E1E1E)
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
@@ -181,13 +175,13 @@ fun SavedNoteCard(note: Note, onDelete: () -> Unit) {
             Text(
                 text = note.content,
                 modifier = Modifier.weight(1f),
-                color = Color.White
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             IconButton(onClick = onDelete) {
                 Icon(
                     imageVector = Icons.Default.Delete,
                     contentDescription = "Delete Note",
-                    tint = Color.White.copy(alpha = 0.7f)
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }
