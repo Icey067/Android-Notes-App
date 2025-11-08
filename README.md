@@ -7,8 +7,8 @@ A simple, local note-taking application for Android, built with Kotlin and Jetpa
 * **Create Notes:** An easy-to-use input field to write and save new notes.
 * **View All Notes:** All saved notes are displayed in a clean, scrollable list.
 * **Persistent Storage:** Notes are saved directly on the device's internal storage, so they persist even after the app is closed.
+* **Note Reminders:** Schedule a specific date and time for any new note. The app uses the system's AlarmManager to send a notification at the exact time, even if the app is closed.
 * **Delete Notes:** Easily remove notes you no longer need.
-* **Dark Theme:** A sleek, modern dark UI.
 
 ## 📸 Screenshots
 
