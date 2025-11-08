@@ -1,4 +1,4 @@
-# Simple Notes App 📝
+# Modern Notes App 📝
 
 A simple, local note-taking application for Android, built with Kotlin and Jetpack Compose. This project serves as a great introduction to modern Android development, covering UI, state management, and local file persistence.
 
