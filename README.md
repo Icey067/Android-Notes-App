@@ -16,7 +16,7 @@ Here's what the app looks like.
 
 | Notes List | Empty State |
 | :---: | :---: |
-| ![Notes App Screenshot](images/2nd.jpg) | ![Notes App Screenshot](images/1st.jpg) |
+| ![Notes App Screenshot](images/2.jpeg) | ![Notes App Screenshot](images/1.jpeg) |
 
 ## 🛠️ Built With
 
